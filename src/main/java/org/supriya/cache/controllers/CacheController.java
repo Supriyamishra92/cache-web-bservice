@@ -3,6 +3,7 @@ package org.supriya.cache.controllers;
 import fastcache.ReadResult;
 import fastcache.Stats;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.supriya.cache.dto.CacheReadResponse;
@@ -17,7 +18,7 @@ public class CacheController {
     private final CacheService cacheService;
 
     @Autowired
-    public CacheController(final CacheService cacheService) {
+    public CacheController(@Qualifier("redis-cache") final CacheService cacheService) {
         this.cacheService = cacheService;
     }
 
